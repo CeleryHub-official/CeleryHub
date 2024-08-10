@@ -135,8 +135,7 @@ GameID = game.PlaceId
 
                 if GameID == gameids[Testid] then
                     GameName = gamenames[Testid]
-                    print(GameName)
-
+                    
             end
         end
 
@@ -159,8 +158,10 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
         Tab:AddButton({
             Name = autoExecName,
             Callback = function()
-                
-                    
+                OrionLib:Destroy()
+                AutoExecLink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Auto%20Exec"
+                loadstring(game:HttpGet(AutoExecLink))()
+                print("auto exec")
 
               end    
         })
@@ -246,7 +247,9 @@ else
     print("LocalPlayer is not available")
 end
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Main"))()
+hublink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Main"
+
+loadstring(game:HttpGet(hublink))()
       end    
 })
 
