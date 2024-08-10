@@ -872,5 +872,5 @@ end)
 
 wait(2)
 print(passes .. "✅ ", fails .. "⛔ ", undefined .. "⏺️ " .. "Out of " .. passes + fails + undefined)
-local rate = math.round(passes / (passes + fails + undefined) * 100)
-print(rate .. "% UNC")
+local Unc = math.round(passes / (passes + fails + undefined) * 100)
+print(Unc .. "% UNC")
