@@ -1,0 +1,75 @@
+-- This script will highlight all players in the game, except the local player, with a specific color using SurfaceGuis on all sides
+
+-- Define the color you want to use for highlighting
+local highlightColor = Color3.new(1, 0, 0) -- Red color
+
+-- Get the local player
+local localPlayer = game.Players.LocalPlayer
+
+-- Function to apply highlight to a player
+local function highlightPlayer(player)
+    -- Check if the player exists and is not the local player
+    if player and player ~= localPlayer and player.Character then
+        -- Loop through all parts of the player's character
+        for _, part in ipairs(player.Character:GetChildren()) do
+            -- Check if the part is a BasePart (such as torso, head, etc.)
+            if part:IsA("BasePart") then
+                -- Loop through all visible faces of the part
+                for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
+                    -- Create a SurfaceGui for each face
+                    local surfaceGui = Instance.new("SurfaceGui")
+                    surfaceGui.Parent = part
+                    surfaceGui.Face = face
+                    surfaceGui.AlwaysOnTop = true
+                    
+                    -- Create a Frame inside the SurfaceGui
+                    local frame = Instance.new("Frame")
+                    frame.Size = UDim2.new(1, 0, 1, 0)
+                    frame.BackgroundColor3 = highlightColor
+                    frame.BackgroundTransparency = 0.5
+                    frame.Parent = surfaceGui
+                end
+            end
+        end
+    end
+end
+
+-- Function to remove highlight from a player
+local function unhighlightPlayer(player)
+    -- Check if the player exists and is not the local player
+    if player and player ~= localPlayer and player.Character then
+        -- Loop through all parts of the player's character
+        for _, part in ipairs(player.Character:GetChildren()) do
+            -- Check if the part has a SurfaceGui
+            for _, surfaceGui in ipairs(part:GetChildren()) do
+                if surfaceGui:IsA("SurfaceGui") then
+                    -- Remove the SurfaceGui
+                    surfaceGui:Destroy()
+                end
+            end
+        end
+    end
+end
+
+-- Function to handle player added event
+local function onPlayerAdded(player)
+    -- Highlight the newly added player
+    highlightPlayer(player)
+end
+
+-- Function to handle player removing event
+local function onPlayerRemoving(player)
+    -- Remove the highlight from the leaving player
+    unhighlightPlayer(player)
+end
+
+-- Connect the player added event to the function
+game.Players.PlayerAdded:Connect(onPlayerAdded)
+
+-- Connect the player removing event to the function
+game.Players.PlayerRemoving:Connect(onPlayerRemoving)
+
+-- Loop through all existing players and highlight them
+for _, player in ipairs(game.Players:GetPlayers()) do
+    highlightPlayer(player)
+end
