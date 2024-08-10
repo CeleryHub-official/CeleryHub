@@ -1,0 +1,62 @@
+-- Place this script in a LocalScript within StarterGui or a GUI component
+ 
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local starterGui = game:GetService("StarterGui")
+ 
+-- Check if LocalPlayer exists (i.e., script is running on the client)
+if player then
+    -- Use SetCore to show a notification
+    starterGui:SetCore("SendNotification", {
+        Title = "All items have been given!",
+        Text = "Have fun!",
+        Duration = 3 -- Duration in seconds
+    })
+end
+ 
+game.Players.LocalPlayer.BlocksAttributes.Bluesteel:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Brick:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Chezburger:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Door:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Glass:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Landmine:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Lantern:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Metal:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Seat:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Sign:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Trapdoor:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Truss:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Brick:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Truss:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Glass:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Door:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Sign:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Lantern:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Barbed_Wire:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Seat:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Metal:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Trapdoor:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Landmine:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Bluesteel:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.BlocksAttributes.Chezburger:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Skirmisher:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Jumper:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Marksman:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Tank:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Ghost:SetAttribute("Unlocked", true)
+    game.Players.LocalPlayer.RobotsAttributes.Saboteur:SetAttribute("Unlocked", true)
+ 
+    -- LocalScript to detect key press
+local UserInputService = game:GetService("UserInputService")
+ 
+-- Function to handle key press
+local function onInputBegan(input, gameProcessed)
+    if not gameProcessed then
+        if input.KeyCode == Enum.KeyCode.Q then
+            game:GetService("ReplicatedStorage").Remotes.Robot.Explode:InvokeServer()
+        end
+    end
+end
+ 
+-- Connect the function to the InputBegan event
+UserInputService.InputBegan:Connect(onInputBegan)
