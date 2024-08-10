@@ -88,7 +88,7 @@ Icon = <string> - URL to the image you want displayed on the window.
 CloseCallback = <function> - Function to execute when the window is closed.
 ]]
 
-
+GameID = game.PlaceId
 
 -- Info Tab
 if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
@@ -100,10 +100,56 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     Tab:AddLabel("Celery Hub access level - " .. access)
     Tab:AddLabel("UserID - " .. game:GetService("Players").LocalPlayer.UserId)
     Tab:AddLabel("Celery Hub Version - " .. Version)
+    Tab:AddLabel("Game ID - " .. GameID)
 
-    --[[
-    Name = <string> - The name of the section.
-    ]]
+    
+        
+
+        -- Game Name
+        if GameID == 13997018456 then
+            GameName = "R:OS"
+        elseif GameID == 17625359962 then
+            GameName = "Rivals"
+        elseif GameID == 13772394625 then
+            GameName = "Blade Ball"
+        elseif GameID == 2788229376 then
+            GameName = "Da Hood"
+        elseif GameID == 11005222274 then
+            GameName = "Build To Survive The Robots"
+        elseif GameID == 10598963932 then
+            GameName = "Cat Piece"
+        else
+            GameName = nil
+        end
+
+        if GameName ~= nil then
+        AutoExec = ("Execute scripts for " .. GameName)
+
+        Tab:AddButton({
+        Name = AutoExec,
+        Callback = function()
+            OrionLib:Destroy()
+
+            if GameName == "R:OS" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+            elseif GameName == "Rivals" then
+                local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
+        local response = game:HttpGet(scriptURL)
+        local executeScript = loadstring(response)
+        executeScript()
+            elseif GameName == "Blade Ball" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"))()
+            elseif GameName == "Da Hood" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/TheEmptynessProject/EmptynessProject/main/index.lua"))()
+            elseif GameName == "Build To Survive The Robots" then
+                loadstring(game:HttpGet("https://github.com/CeleryHub-official/CeleryHub/blob/main/Build%20to%20survive%20Robots"))()
+            elseif GameName == "Cat Piece" then
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"))()
+            end
+
+            end    
+        })
+        end
 
     end
 
@@ -112,78 +158,6 @@ if lvl >= 4 then -- if lvl is grater than or equal to 4(Dev)
 local Tab = Window:MakeTab({
 	Name = "Dev",
 	Icon = "rbxassetid://4483345998",
-})
-Tab:AddSlider({
-	Name = "User access level",
-	Min = 0,
-	Max = 4,
-	Default = 4,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "User access lvl",
-	Callback = function(Value)
-        lvlspoof = Value
-	end    
-})
-
-Tab:AddButton({
-    Name = "Reload",
-    Callback = function()
-        access = lvlspoof
-
-
-local player = game:GetService("Players").LocalPlayer
-
--- Check if LocalPlayer is available
-if player then
-    -- Check if the "ver" tag already exists
-    local existingTag = player:FindFirstChild("ver")
-    
-    if existingTag then
-        -- If the "ver" tag exists, update its value
-        existingTag.Value = Version  -- Set this value to what you need
-    else
-        -- If the "ver" tag does not exist, create a new one
-        local verTag = Instance.new("StringValue")
-        verTag.Name = "ver"
-        verTag.Value = Version  -- Set this value to what you need
-
-        -- Parent the tag to the player
-        verTag.Parent = player
-    end
-else
-    -- If LocalPlayer is not available, print a warning
-    print("LocalPlayer is not available")
-end 
-
-
-
--- Check if LocalPlayer is available
-if player then
-    -- Check if the "Access" tag already exists
-    local existingTag = player:FindFirstChild("Access")
-    
-    if existingTag then
-        -- If the "Access" tag exists, update its value
-        existingTag.Value = access  -- Set this value to what you need
-    else
-        -- If the "Access" tag does not exist, create a new one
-        local accessTag = Instance.new("StringValue")
-        accessTag.Name = "Access"
-        accessTag.Value = access  -- Set this value to what you need
-
-        -- Parent the tag to the player
-        accessTag.Parent = player
-    end
-else
-    -- If LocalPlayer is not available, print a warning
-    print("LocalPlayer is not available")
-end
-
-wait(0.2)
-
-loadstring(game:HttpGet("https://pastebin.com/raw/KvAGktY0"))() -- Load up Script hub
-      end    
 })
 
 end
@@ -202,9 +176,9 @@ local Tab = Window:MakeTab({
         loadstring(game:HttpGet("https://raw.githubusercontent.com/Insertl/QuotasHub/main/BETAv1.3"))()
       end    
 })
-    
-end
+Tab:AddLabel("Arsenal")
 
+end
 -- GAMES
 
 -- Universal
@@ -299,7 +273,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
           Tab:AddButton({
             Name = "Unlock all + Instant Explosion - Made By MAJESTY",
             Callback = function()
-                loadstring(game:HttpGet("https://raw.githubusercontent.com/partygamerhub/Celery-HUB-stuff/main/build%20to%20survive%20the%20robots"))()
+                loadstring(game:HttpGet("https://github.com/CeleryHub-official/CeleryHub/blob/main/Build%20to%20survive%20Robots"))()
               end    
         })
             
