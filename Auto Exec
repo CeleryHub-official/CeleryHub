@@ -45,16 +45,16 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         script2 = nil
         script3 = nil
 
-        if GameName == "Siege" then
+        if gamesearch == "Siege" then
             script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
-        elseif GameName == "Rivals" then
+        elseif gamesearch == "Rivals" then
             local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
         local response = game:HttpGet(scriptURL)
         local executeScript = loadstring(response)
         executeScript()
-        elseif GameName == "Blade" then
+        elseif gamesearch == "Blade" then
             script1 = "https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"
-        elseif GameName == "Cat Piece" then
+        elseif gamesearch == "Cat Piece" then
             script1 = "https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"
         end
 
