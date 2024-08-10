@@ -1,5 +1,5 @@
 -- Celery Hub status
-Version = "1.0"
+Version = "1.1"
 Status = ("Online") -- Online, Down, 
 Reason = ("Test") -- Reasoning as to why Celery Hub is down
 
