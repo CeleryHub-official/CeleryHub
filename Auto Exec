@@ -1,0 +1,76 @@
+GameID = game.PlaceId
+
+-- AUTO EXEC
+
+-- Game Name
+        -- BETA
+        local gameids = {
+            17625359962; -- Rivals
+            13772394625; -- Blade Ball
+            10598963932; -- Cat Piece
+            13997018456; -- R:OS
+        }
+
+        local gamenames = {
+            "Rivals";
+            "Blade Ball";
+            "Cat Piece";
+            "R:OS";
+        }
+
+        -- Function to count the number of entries in the table
+            local function countEntries(tbl)
+                local count = 0
+                for _ in pairs(tbl) do
+                    count = count + 1
+                end
+                return count
+            end
+
+            -- Get the number of entries
+            local numberOfEntries = countEntries(gameids)
+
+            GameName = nil
+            Testid = 0
+
+            for i = 1, numberOfEntries do
+
+               Testid = Testid + 1
+
+                if GameID == gameids[Testid] then
+                    GameName = gamenames[Testid]
+                    print(GameName)
+
+            end
+        end
+
+        script1 = nil
+        script2 = nil
+        script3 = nil
+
+        if GameName == "R:OS" then
+            script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
+        elseif GameName == "Rivals" then
+            local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
+        local response = game:HttpGet(scriptURL)
+        local executeScript = loadstring(response)
+        executeScript()
+        elseif GameName == "Blade Ball" then
+            script1 = "https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"
+        elseif GameName == "Cat Piece" then
+            script1 = "https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"
+        end
+
+
+
+            if script1 ~= nil then 
+            loadstring(game:HttpGet(script1))()
+            end
+
+            if script2 ~= nil then
+                loadstring(game:HttpGet(script2))()
+            end
+
+            if script3 ~= nil then
+                loadstring(game:HttpGet(script3))()
+            end
