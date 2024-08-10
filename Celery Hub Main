@@ -90,52 +90,43 @@ CloseCallback = <function> - Function to execute when the window is closed.
 
 GameID = game.PlaceId
 
--- AUTO EXEC
 
+-- AUTO EXEC
+GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
         -- BETA
-        local gameids = {
-            17625359962; -- Rivals
-            13772394625; -- Blade Ball
-            286090429; -- Arsenal
-            2788229376; -- Da Hood
-            11005222274; -- Build to Survive the Robots
-            10598963932; -- Cat Piece
-            13997018456; -- R:OS
-        }
-
         local gamenames = {
             "Rivals";
             "Blade Ball";
-            "Arsenal";
-            "Da Hood";
-            "Build to Survive the Robots";
             "Cat Piece";
-            "R:OS";
+            "Siege";
         }
 
-        -- Function to count the number of entries in the table
-            local function countEntries(tbl)
-                local count = 0
-                for _ in pairs(tbl) do
-                    count = count + 1
-                end
-                return count
+         -- Function to count the number of entries in the table
+         local function countEntries(tbl)
+            local count = 0
+            for _ in pairs(tbl) do
+                count = count + 1
             end
+            return count
+        end
 
-            -- Get the number of entries
-            local numberOfEntries = countEntries(gameids)
+        -- Get the number of entries
+        local numberOfEntries = countEntries(gamenames)
 
-            GameName = nil
-            Testid = 0
+        Search = 0
 
-            for i = 1, numberOfEntries do
+        for i = 1, numberOfEntries do
 
-               Testid = Testid + 1
+           Search = Search + 1
 
-                if GameID == gameids[Testid] then
-                    GameName = gamenames[Testid]
-                    
+        
+        gamesearch = gamenames[Search]
+
+                    AutoExecFound = false
+               if string.find(GameName, gamesearch) then
+                    AutoExecFound = true
+
             end
         end
 
@@ -151,7 +142,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     Tab:AddLabel("Celery Hub Version - " .. Version)
     
         
-    if lvl >= 3 and GameName ~= nil then -- if lvl is greater than or equal to 3(beta) and GameName isnt nil then
+    if lvl >= 3 and AutoExecFound ~= false then -- if lvl is greater than or equal to 3(beta) and AutoExecFound isnt false then
 
             autoExecName = ("Execute Scripts for " .. GameName)
 
