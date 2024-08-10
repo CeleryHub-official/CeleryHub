@@ -1,10 +1,11 @@
 -- AUTO EXEC
+AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
         -- BETA
         local gamenames = {
             "Rivals";
-            "Blade";
+            "Blade Ball";
             "Cat Piece";
             "Siege";
         }
@@ -30,9 +31,10 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         
         gamesearch = gamenames[Search]
 
-                    AutoExecFound = false
+                    
                if string.find(GameName, gamesearch) then
                     AutoExecFound = true
+					print(AutoExecFound)
 
             end
         end
