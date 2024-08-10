@@ -92,12 +92,13 @@ GameID = game.PlaceId
 
 
 -- AUTO EXEC
+AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
         -- BETA
         local gamenames = {
             "Rivals";
-            "Blade Ball";
+            "Blade";
             "Cat Piece";
             "Siege";
         }
@@ -123,12 +124,15 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         
         gamesearch = gamenames[Search]
 
-                    AutoExecFound = false
+                    
                if string.find(GameName, gamesearch) then
                     AutoExecFound = true
+					print(AutoExecFound)
+                    gs = gamesearch
 
             end
         end
+        -- End of Auto Exec
 
 -- Info Tab
 if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
@@ -137,6 +141,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
         Icon = "rbxassetid://4483345998",
     })
 
+    Tab:AddLabel("Game Name - " .. GameName)
     Tab:AddLabel("Celery Hub access level - " .. access)
     Tab:AddLabel("UserID - " .. game:GetService("Players").LocalPlayer.UserId)
     Tab:AddLabel("Celery Hub Version - " .. Version)
@@ -150,9 +155,81 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
             Name = autoExecName,
             Callback = function()
                 OrionLib:Destroy()
-                AutoExecLink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Auto%20Exec"
-                loadstring(game:HttpGet(AutoExecLink))()
-                print("auto exec")
+
+
+                -- AUTO EXEC
+AutoExecFound = false
+GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+-- Game Name
+        -- BETA
+        local gamenames = {
+            "Rivals";
+            "Blade";
+            "Cat Piece";
+            "Siege";
+        }
+
+         -- Function to count the number of entries in the table
+         local function countEntries(tbl)
+            local count = 0
+            for _ in pairs(tbl) do
+                count = count + 1
+            end
+            return count
+        end
+
+        -- Get the number of entries
+        local numberOfEntries = countEntries(gamenames)
+
+        Search = 0
+
+        for i = 1, numberOfEntries do
+
+           Search = Search + 1
+
+        
+        gamesearch = gamenames[Search]
+
+                    
+               if string.find(GameName, gamesearch) then
+                    AutoExecFound = true
+					print(AutoExecFound)
+                    gs = gamesearch
+
+            end
+        end
+
+        if AutoExecFound == true then
+
+        script1 = nil
+        script2 = nil
+        script3 = nil
+
+        if gs == "Siege" then
+            script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
+        elseif gs == "Rivals" then
+            local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
+        local response = game:HttpGet(scriptURL)
+        local executeScript = loadstring(response)
+        executeScript()
+        elseif gs == "Blade" then
+            script1 = "https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"
+        elseif gs == "Cat Piece" then
+            script1 = "https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"
+        end
+
+            if script1 ~= nil then 
+            loadstring(game:HttpGet(script1))()
+            end
+
+            if script2 ~= nil then
+                loadstring(game:HttpGet(script2))()
+            end
+
+            if script3 ~= nil then
+                loadstring(game:HttpGet(script3))()
+            end
+        end
 
               end    
         })
@@ -160,6 +237,8 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     
         
     end
+
+    -- END OF AUTO EXEC
 
 -- DEV Tab
 if lvl >= 4 then -- if lvl is grater than or equal to 4(Dev)
@@ -242,6 +321,8 @@ hublink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/C
 
 loadstring(game:HttpGet(hublink))()
       end    
+
+      
 })
 
 --[[
@@ -251,6 +332,13 @@ Options = <table> - The options in the dropdown.
 Callback = <function> - The function of the dropdown.
 ]]
 
+
+        Tab:AddButton({
+            Name = "Print Debug Info",
+            Callback = function()
+                print("Auto Exec Found - " .. AutoExecFound)
+            end    
+        })
 end
 
 
