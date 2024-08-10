@@ -125,6 +125,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
         if GameName ~= nil then
         AutoExec = ("Execute scripts for " .. GameName)
 
+        if lvl >= 2 then
         Tab:AddButton({
         Name = AutoExec,
         Callback = function()
@@ -146,11 +147,11 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
             elseif GameName == "Cat Piece" then
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"))()
             end
-
-            end    
+            end
+                
         })
         end
-
+    end
     end
 
 -- DEV Tab
@@ -159,6 +160,85 @@ local Tab = Window:MakeTab({
 	Name = "Dev",
 	Icon = "rbxassetid://4483345998",
 })
+
+Tab:AddDropdown({
+	Name = "Dropdown",
+	Default = "User",
+	Options = {"User", "Premium", "Beta"},
+	Callback = function(Spooflvl)
+        if Spooflvl == "User" then
+            access = 1
+        elseif Spooflvl == "Premium" then
+            access = 2
+        elseif Spooflvl == "Beta" then
+            access = 3
+        end
+        print(access)
+	end    
+})
+
+Tab:AddButton({
+    Name = ("Reload"),
+    Callback = function()
+
+
+
+    local player = game:GetService("Players").LocalPlayer
+
+    -- Check if LocalPlayer is available
+    if player then
+    -- Check if the "ver" tag already exists
+    local existingTag = player:FindFirstChild("ver")
+    
+    if existingTag then
+        -- If the "ver" tag exists, update its value
+        existingTag.Value = Version  -- Set this value to what you need
+    else
+        -- If the "ver" tag does not exist, create a new one
+        local verTag = Instance.new("StringValue")
+        verTag.Name = "ver"
+        verTag.Value = Version  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        verTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end 
+
+-- Check if LocalPlayer is available
+if player then
+    -- Check if the "Access" tag already exists
+    local existingTag = player:FindFirstChild("Access")
+    
+    if existingTag then
+        -- If the "Access" tag exists, update its value
+        existingTag.Value = access  -- Set this value to what you need
+    else
+        -- If the "Access" tag does not exist, create a new one
+        local accessTag = Instance.new("StringValue")
+        accessTag.Name = "Access"
+        accessTag.Value = access  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        accessTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Main"))()
+      end    
+})
+
+--[[
+Name = <string> - The name of the dropdown.
+Default = <string> - The default value of the dropdown.
+Options = <table> - The options in the dropdown.
+Callback = <function> - The function of the dropdown.
+]]
 
 end
 
