@@ -1,4 +1,5 @@
 -- Start of verification
+wait(1)
 ps = "n/a"
 
 -- Define arrays for IDs
