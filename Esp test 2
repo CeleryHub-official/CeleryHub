@@ -1,0 +1,12 @@
+local player = game:GetService("Players").LocalPlayer
+    
+if player:FindFirstChild("esp") then
+    -- If the "esp" tag exists, update its value
+    print("Esp On")
+    if player then
+        player:FindFirstChild("esp"):Destroy()
+    end
+else
+    -- If the "esp" tag does not exist, create a new one
+   print("Esp Off")
+end
