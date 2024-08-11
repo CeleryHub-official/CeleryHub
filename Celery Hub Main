@@ -130,7 +130,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
 -- Game Name
         -- BETA
         local gamenames = {
-            "Rivals";
+            "RIVALS";
             "Blade";
             "Cat Piece";
             "Casual";
@@ -195,7 +195,7 @@ AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
         local gamenames = {
-            "Rivals";
+            "RIVALS";
             "Blade";
             "Cat Piece";
             "Casual";
