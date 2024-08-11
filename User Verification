@@ -2,7 +2,7 @@
 ps = "n/a"
 
 -- Define arrays for IDs
-local devIDs = {954045511, 1}  -- Replace with actual Dev IDs
+local devIDs = {954045511, 4266305315, 7198088326}  -- Replace with actual Dev IDs
 local bannedIDs = {95404551, 1}  -- Replace with actual Banned IDs
 local premiumIDs = {1, 1}  -- Replace with actual Premium IDs
 local betaIDs = {95404551, 1}  -- Replace with actual Beta IDs
