@@ -70,9 +70,15 @@ else
 end
 
 if lvl == 1 then
-WindowName = WinName
+Window = WinName
 else
-WindowName = WinName .. " - " .. access
+Window = WinName .. " - " .. access
+end
+
+if Whitelisted == true then
+    WindowName = Window
+else
+    WindowName = (Window .. " [Untested]")
 end
 local Window = OrionLib:MakeWindow({Name = WindowName, HidePremium = true, SaveConfig = true, ConfigFolder = "OrionTest"})
 
@@ -100,7 +106,8 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             "Rivals";
             "Blade";
             "Cat Piece";
-            "Siege";
+            "Casual";
+            "Ranked";
         }
 
          -- Function to count the number of entries in the table
@@ -143,9 +150,8 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
 
     Tab:AddLabel("Game Name - " .. GameName)
     Tab:AddLabel("Celery Hub access level - " .. access)
-    Tab:AddLabel("UserID - " .. game:GetService("Players").LocalPlayer.UserId)
     Tab:AddLabel("Celery Hub Version - " .. Version)
-    
+    Tab:AddLabel("Executor - " .. Executor)
         
     if lvl >= 3 and AutoExecFound ~= false then -- if lvl is greater than or equal to 3(beta) and AutoExecFound isnt false then
 
@@ -161,12 +167,12 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
 AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
-        -- BETA
         local gamenames = {
             "Rivals";
             "Blade";
             "Cat Piece";
-            "Siege";
+            "Casual";
+            "Ranked";
         }
 
          -- Function to count the number of entries in the table
@@ -205,7 +211,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         script2 = nil
         script3 = nil
 
-        if gs == "Siege" then
+        if gs == "Casual" or gs == "Ranked" then
             script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
         elseif gs == "Rivals" then
             local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
@@ -235,7 +241,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         })
     end
     
-        
+
     end
 
     -- END OF AUTO EXEC
@@ -250,7 +256,7 @@ local Tab = Window:MakeTab({
 Tab:AddLabel("Game ID - " .. GameID)
 
 Tab:AddDropdown({
-	Name = "Dropdown",
+	Name = "Spoof access level",
 	Default = "User",
 	Options = {"User", "Premium", "Beta"},
 	Callback = function(Spooflvl)
@@ -264,6 +270,7 @@ Tab:AddDropdown({
         print(access)
 	end    
 })
+
 
 Tab:AddButton({
     Name = ("Reload"),
@@ -334,9 +341,19 @@ Callback = <function> - The function of the dropdown.
 
 
         Tab:AddButton({
-            Name = "Print Debug Info",
+            Name = "Quick Disconect",
             Callback = function()
-                print("Auto Exec Found - " .. AutoExecFound)
+                game:Shutdown()
+            end    
+        })
+
+
+        Tab:AddButton({
+            Name = "Debug Menu",
+            Callback = function()
+                OrionLib:Destroy()
+                DebugUrl = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Debug%20menu"
+                loadstring(game:HttpGet(DebugUrl))()
             end    
         })
 end
