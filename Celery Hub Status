@@ -1,7 +1,7 @@
 -- Celery Hub status
 Version = "1.1"
-Status = ("Online") -- Online, Down, 
-Reason = ("Test") -- Reasoning as to why Celery Hub is down
+Status = ("Down") -- Online, Down, 
+Reason = ("Universal ESP is crashing the script hub in some games") -- Reasoning as to why Celery Hub is down
 
 
 
