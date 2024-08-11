@@ -1,5 +1,4 @@
 -- Start of verification
-wait(0.2)
 ps = "n/a"
 
 -- Define arrays for IDs
