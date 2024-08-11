@@ -10,6 +10,36 @@ Reason = ("Test") -- Reasoning as to why Celery Hub is down
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+Executor = identifyexecutor()
+
+local ExecWhiteList = {"Celery", "s"}
+local ExecBlackList = {"Solara", "s"}
+local ExecNotList = {"s", "s"}
+
+if table.find(ExecWhiteList, Executor) then
+    print("Executor is Whitlisted")
+    Whitelisted = true
+elseif table.find(ExecBlackList, Executor) then
+    game:GetService("Players").LocalPlayer:Kick("Executor is Blacklisted")
+elseif table.find(ExecBlackList, Executor) then
+    game:GetService("Players").LocalPlayer:Kick("Executor is Not suported")
+else
+    print("Executor has not been tested")
+    Whitelisted = false
+end
+
 verlink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/User%20Verification" -- Link to Verification code
 
 -- Get the LocalPlayer
