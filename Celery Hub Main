@@ -1,97 +1,277 @@
+DevBuild = true
+
+-- loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Load"))()  Celery Hub Load
+
+
+-- Celery Hub Load
+statuslink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Status"
+hublink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Main"
+
+if DevBuild == nil then
+loadstring(game:HttpGet(statuslink))() -- Load Start of status
+wait(0.2)
+loadstring(game:HttpGet(hublink))() -- Load Hub
+end
+
+-- Celery Hub Exec Detect
+
+
+
+-- Celery Hub Esp test 1
+
+
+--[[
+
+
+EspTest = game.Players.LocalPlayer
+
+local player = game:GetService("Players").LocalPlayer
+
+-- Check if LocalPlayer is available
+if player then
+    -- Check if the "esp" tag already exists
+    local existingTag = player:FindFirstChild("esp")
+    
+    if existingTag then
+        -- If the "esp" tag exists, update its value
+        existingTag.Value = "true"  -- Set this value to what you need
+    else
+        -- If the "esp" tag does not exist, create a new one
+        local espTag = Instance.new("StringValue")
+        espTag.Name = "esp"
+        espTag.Value = "true"  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        espTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end 
+
+
+]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Celery Hub status
+Version = "1.1"
+Status = ("Online") -- Online, Down, 
+Reason = ("Test") -- Reasoning as to why Celery Hub is down
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Executor = identifyexecutor()
+
+local ExecWhiteList = {"Celery", "s"}
+local ExecBlackList = {"Solara", "s"}
+local ExecNotList = {"s", "s"}
+
+if table.find(ExecWhiteList, Executor) then
+    print("Executor is Whitlisted")
+    Whitelisted = true
+elseif table.find(ExecBlackList, Executor) then
+    game:GetService("Players").LocalPlayer:Kick("Executor is Blacklisted")
+elseif table.find(ExecBlackList, Executor) then
+    game:GetService("Players").LocalPlayer:Kick("Executor is Not suported")
+else
+    print("Executor has not been tested")
+    Whitelisted = false
+end
+
+verlink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/User%20Verification" -- Link to Verification code
+
+-- Get the LocalPlayer
+local player = game:GetService("Players").LocalPlayer
+if Status == "Down" then
+    player:Kick("Celery Hub is offline - " .. Reason)
+elseif Status == "Online" then
+    if DevBuild == nil then
+    loadstring(game:HttpGet(verlink))() -- Load Start of verification
+    end
+end
+
+-- Check if LocalPlayer is available
+if player then
+    -- Check if the "ver" tag already exists
+    local existingTag = player:FindFirstChild("ver")
+    
+    if existingTag then
+        -- If the "ver" tag exists, update its value
+        existingTag.Value = Version  -- Set this value to what you need
+    else
+        -- If the "ver" tag does not exist, create a new one
+        local verTag = Instance.new("StringValue")
+        verTag.Name = "ver"
+        verTag.Value = Version  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        verTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end 
+ -- Check if the "ver" tag already exists
+ local existingTag = player:FindFirstChild("exe")
+    
+ if existingTag then
+     -- If the "ver" tag exists, update its value
+     existingTag.Value = Executor  -- Set this value to what you need
+ else
+     -- If the "ver" tag does not exist, create a new one
+     local exeTag = Instance.new("StringValue")
+     exeTag.Name = "exe"
+     exeTag.Value = Executor  -- Set this value to what you need
+
+     -- Parent the tag to the player
+     exeTag.Parent = player
+ end
+Executor = nil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Start of verification
+ps = "n/a"
+
+-- Define arrays for IDs
+local devIDs = {954045511, 4266305315, 7198088326}  -- Replace with actual Dev IDs
+local bannedIDs = {95404551, 1}  -- Replace with actual Banned IDs
+local premiumIDs = {1, 1}  -- Replace with actual Premium IDs
+local betaIDs = {95404551, 1}  -- Replace with actual Beta IDs
+
+-- Get the LocalPlayer
+local player = game:GetService("Players").LocalPlayer
+
+-- Check if player is available
+if not player then
+    return
+end
+
+-- Get the player's ID
+local playerID = player.UserId
+
+-- Function to check which array the player ID is in
+local function checkPlayerID(id)
+    if table.find(devIDs, id) then
+        ps = 4
+    elseif table.find(bannedIDs, id) then
+        ps = 0
+    elseif table.find(premiumIDs, id) then
+        ps = 2
+    elseif table.find(betaIDs, id) then
+        ps = 3
+    else
+        ps = 1
+    end
+end
+
+-- Call the function with the player's ID
+checkPlayerID(playerID)
+
+access = ps
+
+-- Check if LocalPlayer is available
+if player then
+    -- Check if the "Access" tag already exists
+    local existingTag = player:FindFirstChild("Access")
+    
+    if existingTag then
+        -- If the "Access" tag exists, update its value
+        existingTag.Value = access  -- Set this value to what you need
+    else
+        -- If the "Access" tag does not exist, create a new one
+        local accessTag = Instance.new("StringValue")
+        accessTag.Name = "Access"
+        accessTag.Value = access  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        accessTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end
+
+if ps == 0 then
+    game:GetService("Players").LocalPlayer:Kick("Banned from Celery Hub")
+elseif DevBuild == nil then
+    print("Verified")
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- Start of HUB
-
--- Define the color you want to use for highlighting
-local highlightColor = Color3.new(1, 0, 0) -- Red color
-
--- Get the local player
-local localPlayer = game.Players.LocalPlayer
-
--- Function to apply highlight to a player
-local function highlightPlayer(player)
-    -- Check if the player exists and is not the local player
-    if player and player ~= localPlayer and player.Character then
-        -- Check if the player is on a different team
-        if localPlayer.Team ~= player.Team then
-            -- Loop through all parts of the player's character
-            for _, part in ipairs(player.Character:GetChildren()) do
-                -- Check if the part is a BasePart (such as torso, head, etc.)
-                if part:IsA("BasePart") then
-                    -- Loop through all visible faces of the part
-                    for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
-                        -- Create a SurfaceGui for each face
-                        local surfaceGui = Instance.new("SurfaceGui")
-                        surfaceGui.Parent = part
-                        surfaceGui.Face = face
-                        surfaceGui.AlwaysOnTop = true
-                        
-                        -- Create a Frame inside the SurfaceGui
-                        local frame = Instance.new("Frame")
-                        frame.Size = UDim2.new(1, 0, 1, 0)
-                        frame.BackgroundColor3 = highlightColor
-                        frame.BackgroundTransparency = 0.5
-                        frame.Parent = surfaceGui
-                    end
-                end
-            end
-        end
-    end
-end
-
--- Function to remove highlight from a player
-local function unhighlightPlayer(player)
-    -- Check if the player exists and is not the local player
-    if player and player ~= localPlayer and player.Character then
-        -- Loop through all parts of the player's character
-        for _, part in ipairs(player.Character:GetChildren()) do
-            -- Check if the part has a SurfaceGui
-            for _, surfaceGui in ipairs(part:GetChildren()) do
-                if surfaceGui:IsA("SurfaceGui") then
-                    -- Remove the SurfaceGui
-                    surfaceGui:Destroy()
-                end
-            end
-        end
-    end
-end
-
--- Function to handle player added event
-local function onPlayerAdded(player)
-    -- Highlight the newly added player if On is true
-    if On then
-        highlightPlayer(player)
-    end
-end
-
--- Function to handle player removing event
-local function onPlayerRemoving(player)
-    -- Remove the highlight from the leaving player
-    unhighlightPlayer(player)
-end
-
--- Connect the player added event to the function
-game.Players.PlayerAdded:Connect(onPlayerAdded)
-
--- Connect the player removing event to the function
-game.Players.PlayerRemoving:Connect(onPlayerRemoving)
-
--- Toggle variable
-local On = false
-
--- Function to apply or remove highlights based on the On state
-local function EspToggle()
-    for _, player in ipairs(game.Players:GetPlayers()) do
-        if On then
-            highlightPlayer(player)
-        else
-            unhighlightPlayer(player)
-        end
-    end
-end
-
--- Call the EspToggle function to apply the current state
-EspToggle()
-On = true
-
 -- Get the LocalPlayer
 local player = game:GetService("Players").LocalPlayer
 
@@ -502,13 +682,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
 	Name = "Esp - Made By MAJESTY",
 	Default = false,
 	Callback = function()
-		if On == true then
-On = false
-EspToggle()
-else
-On = true
-EspToggle()
-end
+		print("l")
 	end    
 })
     Tab:AddButton({
