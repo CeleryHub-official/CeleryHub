@@ -1574,7 +1574,7 @@ end
 end
 end)
 print("  ⏺️ (No Test) Using hookmetamethod to stop metamethod hooks - There was a case like in Electron V3 where the executor's security was just quite literally hookmetamethod. You used to be able to use hookmetamethod to unhook blocked functions and bypass the security.")
-task.wait(2.5)
+task.wait(5)
 
 
 
