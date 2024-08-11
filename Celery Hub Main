@@ -25,6 +25,30 @@ if player then
 end
 
 -- Get the LocalPlayer
+local player = game:GetService("Players").LocalPlayer
+
+-- Check if LocalPlayer is available
+if player then
+    -- Find the "exe" tag
+    local exeTag = player:FindFirstChild("exe")
+    
+    if exeTag then
+        -- If the "Access" tag exists, print its value
+        Executor = exeTag.Value
+    else
+        -- If the "Access" tag does not exist, print a message
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+end
+
+-- Check if LocalPlayer is available
+if player then
+    -- Find the "Access" tag
+    local exeTag = player:FindFirstChild("exe")
+    exeTag:Destroy()
+end
+-- Get the LocalPlayer
 
 -- Check if LocalPlayer is available
 if player then
@@ -98,6 +122,9 @@ GameID = game.PlaceId
 
 
 -- AUTO EXEC
+
+
+
 AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
