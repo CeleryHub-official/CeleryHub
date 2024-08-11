@@ -1,7 +1,5 @@
 -- Start of HUB
 
--- This script will highlight all players in the game, except the local player, with a specific color using SurfaceGuis on all sides
-
 -- Define the color you want to use for highlighting
 local highlightColor = Color3.new(1, 0, 0) -- Red color
 
@@ -12,24 +10,27 @@ local localPlayer = game.Players.LocalPlayer
 local function highlightPlayer(player)
     -- Check if the player exists and is not the local player
     if player and player ~= localPlayer and player.Character then
-        -- Loop through all parts of the player's character
-        for _, part in ipairs(player.Character:GetChildren()) do
-            -- Check if the part is a BasePart (such as torso, head, etc.)
-            if part:IsA("BasePart") then
-                -- Loop through all visible faces of the part
-                for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
-                    -- Create a SurfaceGui for each face
-                    local surfaceGui = Instance.new("SurfaceGui")
-                    surfaceGui.Parent = part
-                    surfaceGui.Face = face
-                    surfaceGui.AlwaysOnTop = true
-                    
-                    -- Create a Frame inside the SurfaceGui
-                    local frame = Instance.new("Frame")
-                    frame.Size = UDim2.new(1, 0, 1, 0)
-                    frame.BackgroundColor3 = highlightColor
-                    frame.BackgroundTransparency = 0.5
-                    frame.Parent = surfaceGui
+        -- Check if the player is on a different team
+        if localPlayer.Team ~= player.Team then
+            -- Loop through all parts of the player's character
+            for _, part in ipairs(player.Character:GetChildren()) do
+                -- Check if the part is a BasePart (such as torso, head, etc.)
+                if part:IsA("BasePart") then
+                    -- Loop through all visible faces of the part
+                    for _, face in ipairs(Enum.NormalId:GetEnumItems()) do
+                        -- Create a SurfaceGui for each face
+                        local surfaceGui = Instance.new("SurfaceGui")
+                        surfaceGui.Parent = part
+                        surfaceGui.Face = face
+                        surfaceGui.AlwaysOnTop = true
+                        
+                        -- Create a Frame inside the SurfaceGui
+                        local frame = Instance.new("Frame")
+                        frame.Size = UDim2.new(1, 0, 1, 0)
+                        frame.BackgroundColor3 = highlightColor
+                        frame.BackgroundTransparency = 0.5
+                        frame.Parent = surfaceGui
+                    end
                 end
             end
         end
@@ -55,8 +56,10 @@ end
 
 -- Function to handle player added event
 local function onPlayerAdded(player)
-    -- Highlight the newly added player
-    highlightPlayer(player)
+    -- Highlight the newly added player if On is true
+    if On then
+        highlightPlayer(player)
+    end
 end
 
 -- Function to handle player removing event
@@ -71,26 +74,23 @@ game.Players.PlayerAdded:Connect(onPlayerAdded)
 -- Connect the player removing event to the function
 game.Players.PlayerRemoving:Connect(onPlayerRemoving)
 
+-- Toggle variable
+local On = false
 
-
-On = true
-
+-- Function to apply or remove highlights based on the On state
 local function EspToggle()
-
-
-
-
-
-for _, player in ipairs(game.Players:GetPlayers()) do
-if On == true then
-    highlightPlayer(player)
-else
-    unhighlightPlayer(player)
-end
-end
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if On then
+            highlightPlayer(player)
+        else
+            unhighlightPlayer(player)
+        end
+    end
 end
 
+-- Call the EspToggle function to apply the current state
 EspToggle()
+On = true
 
 -- Get the LocalPlayer
 local player = game:GetService("Players").LocalPlayer
@@ -228,6 +228,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             "Cat Piece";
             "Casual";
             "Ranked";
+            "Arsenal"
         }
 
          -- Function to count the number of entries in the table
@@ -287,13 +288,6 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
 AutoExecFound = false
 GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
 -- Game Name
-        local gamenames = {
-            "RIVALS";
-            "Blade";
-            "Cat Piece";
-            "Casual";
-            "Ranked";
-        }
 
          -- Function to count the number of entries in the table
          local function countEntries(tbl)
@@ -342,6 +336,16 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             script1 = "https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"
         elseif gs == "Cat Piece" then
             script1 = "https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"
+        elseif gs == "Arsenal" then
+            -- when you press your left mouse button the aimbot is enabled, when u let it go it gets disabled.
+
+getgenv().Settings = {
+    Radius = 100, -- The size of your aimbot FOV, i recommend between 50 - 300 :)
+}
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
+            On = true
+            EspToggle()
         end
 
             if script1 ~= nil then 
@@ -566,7 +570,18 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
              Icon = "rbxassetid://4483345998",
           })
 
-          Tab:AddLabel("Under Development")
+          Tab:AddButton({
+            Name = "Aimbot - Made By neural",
+            Callback = function()
+                -- when you press your left mouse button the aimbot is enabled, when u let it go it gets disabled.
+
+getgenv().Settings = {
+    Radius = 100, -- The size of your aimbot FOV, i recommend between 50 - 300 :)
+}
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
+              end    
+        })
             
         end
 
