@@ -240,7 +240,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
 
         if gs == "Casual" or gs == "Ranked" then
             script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
-        elseif gs == "Rivals" then
+        elseif gs == "RIVALS" then
             local scriptURL = 'https://raw.githubusercontent.com/Sheeshablee73/Scriptss/main/RivalsUPD2.lua'
         local response = game:HttpGet(scriptURL)
         local executeScript = loadstring(response)
