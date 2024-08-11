@@ -73,3 +73,19 @@ else
     -- If LocalPlayer is not available, print a warning
     print("LocalPlayer is not available")
 end 
+ -- Check if the "ver" tag already exists
+ local existingTag = player:FindFirstChild("exe")
+    
+ if existingTag then
+     -- If the "ver" tag exists, update its value
+     existingTag.Value = Executor  -- Set this value to what you need
+ else
+     -- If the "ver" tag does not exist, create a new one
+     local exeTag = Instance.new("StringValue")
+     exeTag.Name = "exe"
+     exeTag.Value = Executor  -- Set this value to what you need
+
+     -- Parent the tag to the player
+     exeTag.Parent = player
+ end
+Executor = nil
