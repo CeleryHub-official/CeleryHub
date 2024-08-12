@@ -1,7 +1,7 @@
 -- Celery Hub status
 Version = "1.1"
 Status = ("Online") -- Online, Down, 
-Reason = ("Universal ESP is crashing the script hub in some games") -- Reasoning as to why Celery Hub is down
+Reason = ("Test") -- Reasoning as to why Celery Hub is down
 
 
 
@@ -33,7 +33,7 @@ if table.find(ExecWhiteList, Executor) then
     Whitelisted = true
 elseif table.find(ExecBlackList, Executor) then
     game:GetService("Players").LocalPlayer:Kick("Executor is Blacklisted")
-elseif table.find(ExecBlackList, Executor) then
+elseif table.find(ExecNotList, Executor) then
     game:GetService("Players").LocalPlayer:Kick("Executor is Not suported")
 else
     print("Executor has not been tested")
