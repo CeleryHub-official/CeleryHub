@@ -103,7 +103,7 @@ Tab:AddToggle({
 })
 Tab:AddToggle({
 	Name = "No Searchlights",
-	Default = true,
+	Default = false,
 	Flag = "Searchlights",
 	Save = true
 })
@@ -245,7 +245,7 @@ local function applytrickster(inst)
 	text.Parent = game.CoreGui
 	local label = Instance.new("TextLabel")
 	label.Size = UDim2.new(1, 0, 1, 0)
-	label.Text = "Do not enter"
+	label.Text = "Trickster Room"
 	label.TextColor3 = Color3.new(1, 1, 1) 
 	label.BackgroundTransparency = 1
 	label.TextStrokeTransparency = 0
@@ -280,7 +280,7 @@ workspace.ChildAdded:Connect(function(inst)
 	if table.find(sikibid, inst.Name) then
 		if OrionLib.Flags.NotifyMonster.Value then
 			OrionLib:MakeNotification({
-				Name = "A monster has spawned go hide in the closet",
+				Name = "A monster has spawned",
 				Content = "WARNING!!!!!!!!!!!!",
 				Image = "rbxassetid://4483345998",
 				Time = 10
