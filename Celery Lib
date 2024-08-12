@@ -1,3 +1,13 @@
+LibName = getgenv().LibName
+CustomIcon = getgenv().CustomIcon
+LibTheme = getgenv().LibTheme
+ColorMain = getgenv().ColorMain
+ColorSecond = getgenv().ColorSecond
+ColorStroke = getgenv().ColorStroke
+ColorDivider = getgenv().ColorDivider
+ColorText = getgenv().ColorText
+ColorTextDark = getgenv().ColorTextDark
+
 if LibTheme == "Custom" then
     MR = ColorMain[1]
     MG = ColorMain[2]
