@@ -69,7 +69,33 @@ game.Players.PlayerAdded:Connect(onPlayerAdded)
 -- Connect the player removing event to the function
 game.Players.PlayerRemoving:Connect(onPlayerRemoving)
 
--- Loop through all existing players and highlight them
+local player = game:GetService("Players").LocalPlayer
+    espTag = (player:FindFirstChild("esp"))
+
+    is = nil
+
+while 1 == 1 do
+
+
+
+while espTag.Value == is do
+    local player = game:GetService("Players").LocalPlayer
+    espTag = (player:FindFirstChild("esp"))
+    wait(0.1)
+end
+
+players = 0
+
+On = espTag.Value
+
 for _, player in ipairs(game.Players:GetPlayers()) do
+if espTag.Value == "true" then
+    is = "true"
     highlightPlayer(player)
+else
+    is = "false"
+    unhighlightPlayer(player)
+end
+end
+wait(0.00001)
 end
