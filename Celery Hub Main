@@ -433,7 +433,12 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
           end    
     })
 
-    
+    Tab:AddButton({
+        Name = "Executor",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/FreezyWare/Remake-Executor/main/Executor/Krnl-Legacy.Lua"))()
+          end    
+    })
     
     Tab:AddToggle({
 	Name = "Esp - Made By MAJESTY",
@@ -499,6 +504,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
             loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
           end    
     })
+    
 end
 
 -- Rivals
