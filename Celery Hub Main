@@ -135,7 +135,8 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             "Cat Piece";
             "Casual";
             "Ranked";
-            "Arsenal"
+            "Arsenal";
+            "Da Hood";
         }
 
          -- Function to count the number of entries in the table
@@ -244,15 +245,17 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
         elseif gs == "Cat Piece" then
             script1 = "https://raw.githubusercontent.com/Kaitofyp/Cat-Piece-V.2/main/Op%20script"
         elseif gs == "Arsenal" then
-            -- when you press your left mouse button the aimbot is enabled, when u let it go it gets disabled.
+                        -- when you press your left mouse button the aimbot is enabled, when u let it go it gets disabled.
 
-getgenv().Settings = {
-    Radius = 100, -- The size of your aimbot FOV, i recommend between 50 - 300 :)
-}
+            getgenv().Settings = {
+                Radius = 100, -- The size of your aimbot FOV, i recommend between 50 - 300 :)
+            }
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
-SetEsp = "true"
-end
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
+            SetEsp = "true"
+        elseif gs == "Da Hood" then
+            script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
+        end
 
 local player = game:GetService("Players").LocalPlayer
 
