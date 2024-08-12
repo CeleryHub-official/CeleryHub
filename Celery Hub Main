@@ -1,276 +1,3 @@
-DevBuild = true
-
--- loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Load"))()  Celery Hub Load
-
-
--- Celery Hub Load
-statuslink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Status"
-hublink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Hub%20Main"
-
-if DevBuild == nil then
-loadstring(game:HttpGet(statuslink))() -- Load Start of status
-wait(0.2)
-loadstring(game:HttpGet(hublink))() -- Load Hub
-end
-
--- Celery Hub Exec Detect
-
-
-
--- Celery Hub Esp test 1
-
-
---[[
-
-
-EspTest = game.Players.LocalPlayer
-
-local player = game:GetService("Players").LocalPlayer
-
--- Check if LocalPlayer is available
-if player then
-    -- Check if the "esp" tag already exists
-    local existingTag = player:FindFirstChild("esp")
-    
-    if existingTag then
-        -- If the "esp" tag exists, update its value
-        existingTag.Value = "true"  -- Set this value to what you need
-    else
-        -- If the "esp" tag does not exist, create a new one
-        local espTag = Instance.new("StringValue")
-        espTag.Name = "esp"
-        espTag.Value = "true"  -- Set this value to what you need
-
-        -- Parent the tag to the player
-        espTag.Parent = player
-    end
-else
-    -- If LocalPlayer is not available, print a warning
-    print("LocalPlayer is not available")
-end 
-
-
-]]
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Celery Hub status
-Version = "1.1"
-Status = ("Online") -- Online, Down, 
-Reason = ("Test") -- Reasoning as to why Celery Hub is down
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Executor = identifyexecutor()
-
-local ExecWhiteList = {"Celery", "s"}
-local ExecBlackList = {"Solara", "s"}
-local ExecNotList = {"s", "s"}
-
-if table.find(ExecWhiteList, Executor) then
-    print("Executor is Whitlisted")
-    Whitelisted = true
-elseif table.find(ExecBlackList, Executor) then
-    game:GetService("Players").LocalPlayer:Kick("Executor is Blacklisted")
-elseif table.find(ExecBlackList, Executor) then
-    game:GetService("Players").LocalPlayer:Kick("Executor is Not suported")
-else
-    print("Executor has not been tested")
-    Whitelisted = false
-end
-
-verlink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/User%20Verification" -- Link to Verification code
-
--- Get the LocalPlayer
-local player = game:GetService("Players").LocalPlayer
-if Status == "Down" then
-    player:Kick("Celery Hub is offline - " .. Reason)
-elseif Status == "Online" then
-    if DevBuild == nil then
-    loadstring(game:HttpGet(verlink))() -- Load Start of verification
-    end
-end
-
--- Check if LocalPlayer is available
-if player then
-    -- Check if the "ver" tag already exists
-    local existingTag = player:FindFirstChild("ver")
-    
-    if existingTag then
-        -- If the "ver" tag exists, update its value
-        existingTag.Value = Version  -- Set this value to what you need
-    else
-        -- If the "ver" tag does not exist, create a new one
-        local verTag = Instance.new("StringValue")
-        verTag.Name = "ver"
-        verTag.Value = Version  -- Set this value to what you need
-
-        -- Parent the tag to the player
-        verTag.Parent = player
-    end
-else
-    -- If LocalPlayer is not available, print a warning
-    print("LocalPlayer is not available")
-end 
- -- Check if the "ver" tag already exists
- local existingTag = player:FindFirstChild("exe")
-    
- if existingTag then
-     -- If the "ver" tag exists, update its value
-     existingTag.Value = Executor  -- Set this value to what you need
- else
-     -- If the "ver" tag does not exist, create a new one
-     local exeTag = Instance.new("StringValue")
-     exeTag.Name = "exe"
-     exeTag.Value = Executor  -- Set this value to what you need
-
-     -- Parent the tag to the player
-     exeTag.Parent = player
- end
-Executor = nil
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- Start of verification
-ps = "n/a"
-
--- Define arrays for IDs
-local devIDs = {954045511, 4266305315, 7198088326}  -- Replace with actual Dev IDs
-local bannedIDs = {95404551, 1}  -- Replace with actual Banned IDs
-local premiumIDs = {1, 1}  -- Replace with actual Premium IDs
-local betaIDs = {95404551, 1}  -- Replace with actual Beta IDs
-
--- Get the LocalPlayer
-local player = game:GetService("Players").LocalPlayer
-
--- Check if player is available
-if not player then
-    return
-end
-
--- Get the player's ID
-local playerID = player.UserId
-
--- Function to check which array the player ID is in
-local function checkPlayerID(id)
-    if table.find(devIDs, id) then
-        ps = 4
-    elseif table.find(bannedIDs, id) then
-        ps = 0
-    elseif table.find(premiumIDs, id) then
-        ps = 2
-    elseif table.find(betaIDs, id) then
-        ps = 3
-    else
-        ps = 1
-    end
-end
-
--- Call the function with the player's ID
-checkPlayerID(playerID)
-
-access = ps
-
--- Check if LocalPlayer is available
-if player then
-    -- Check if the "Access" tag already exists
-    local existingTag = player:FindFirstChild("Access")
-    
-    if existingTag then
-        -- If the "Access" tag exists, update its value
-        existingTag.Value = access  -- Set this value to what you need
-    else
-        -- If the "Access" tag does not exist, create a new one
-        local accessTag = Instance.new("StringValue")
-        accessTag.Name = "Access"
-        accessTag.Value = access  -- Set this value to what you need
-
-        -- Parent the tag to the player
-        accessTag.Parent = player
-    end
-else
-    -- If LocalPlayer is not available, print a warning
-    print("LocalPlayer is not available")
-end
-
-if ps == 0 then
-    game:GetService("Players").LocalPlayer:Kick("Banned from Celery Hub")
-elseif DevBuild == nil then
-    print("Verified")
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 -- Start of HUB
 -- Get the LocalPlayer
 local player = game:GetService("Players").LocalPlayer
@@ -678,11 +405,52 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
           end    
     })
 
+    
+    
     Tab:AddToggle({
 	Name = "Esp - Made By MAJESTY",
 	Default = false,
 	Callback = function()
-		print("l")
+
+
+
+		if SetEsp == nil then
+            SetEsp = "true"
+        end
+        
+        if SetEsp == "true" then
+        SetEsp = "false"
+        else
+        SetEsp = "true"
+        end
+        
+        local player = game:GetService("Players").LocalPlayer
+        
+        -- Check if LocalPlayer is available
+        if player then
+            -- Check if the "esp" tag already exists
+            local existingTag = player:FindFirstChild("esp")
+            
+            if existingTag then
+                -- If the "esp" tag exists, update its value
+                existingTag.Value = SetEsp  -- Set this value to what you need
+            else
+                -- If the "esp" tag does not exist, create a new one
+                local espTag = Instance.new("StringValue")
+                espTag.Name = "esp"
+                espTag.Value = SetEsp  -- Set this value to what you need
+        
+                -- Parent the tag to the player
+                espTag.Parent = player
+            end
+        else
+            -- If LocalPlayer is not available, print a warning
+            print("LocalPlayer is not available")
+        end 
+
+
+
+        
 	end    
 })
     Tab:AddButton({
@@ -835,3 +603,5 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     DevBuild = nil
 
     OrionLib:Init()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Esp"))()
