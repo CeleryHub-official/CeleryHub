@@ -181,7 +181,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     Tab:AddLabel("Celery Hub Version - " .. Version)
     Tab:AddLabel("Executor - " .. Executor)
         
-    if lvl >= 3 and AutoExecFound ~= false then -- if lvl is greater than or equal to 3(beta) and AutoExecFound isnt false then
+    if lvl >= 1 and AutoExecFound ~= false then -- if lvl is greater than or equal to 3(beta) and AutoExecFound isnt false then
 
             autoExecName = ("Execute Scripts for " .. GameName)
 
@@ -251,9 +251,34 @@ getgenv().Settings = {
 }
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
-            On = true
-            EspToggle()
-        end
+SetEsp = "true"
+end
+
+local player = game:GetService("Players").LocalPlayer
+
+-- Check if LocalPlayer is available
+if player then
+    -- Check if the "esp" tag already exists
+    local existingTag = player:FindFirstChild("esp")
+    
+    if existingTag then
+        -- If the "esp" tag exists, update its value
+        existingTag.Value = SetEsp  -- Set this value to what you need
+    else
+        -- If the "esp" tag does not exist, create a new one
+        local espTag = Instance.new("StringValue")
+        espTag.Name = "esp"
+        espTag.Value = SetEsp  -- Set this value to what you need
+
+        -- Parent the tag to the player
+        espTag.Parent = player
+    end
+else
+    -- If LocalPlayer is not available, print a warning
+    print("LocalPlayer is not available")
+end 
+
+            
 
             if script1 ~= nil then 
             loadstring(game:HttpGet(script1))()
