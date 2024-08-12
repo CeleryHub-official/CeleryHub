@@ -1,4 +1,9 @@
 -- Start of HUB
+local text = Drawing.new("Text")
+text.Text = ("Loading")
+text.Size = 30
+text.Position = Vector2.new(1700,10)
+text.Visible = false
 -- Get the LocalPlayer
 local player = game:GetService("Players").LocalPlayer
 
@@ -416,6 +421,15 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
           end    
     })
 
+    Tab:AddToggle({
+        Name = "Show Fps",
+        Default = false,
+        Callback = function(Value)
+            print(Value)
+            text.Visible = Value
+        end    
+    })
+
     Tab:AddButton({
         Name = "Esp - Made By MAJESTY",
         Callback = function()
@@ -472,6 +486,13 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
         Name = "Triple Hub - Made By Triple",
         Callback = function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/000177171/mantain-scripts/main/BB/TripleHub"))()
+          end    
+    })
+
+    Tab:AddButton({
+        Name = "Blade Ball Celert - Made By Fortnite GODxx223",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Blade%20ball%20celery"))()
           end    
     })
         
@@ -597,3 +618,9 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     DevBuild = nil
 
     OrionLib:Init()
+
+    local RunService = game:GetService("RunService")
+    RunService.RenderStepped:Connect(function(frame)
+    Fps = math.round(1/frame)
+	text.Text = ("FPS: " .. Fps)
+    end)
