@@ -1,0 +1,140 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "Celery Hub Arsenal Gui", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+modguns = false
+
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Aimbot",
+	Callback = function()
+      		-- when you press your left mouse button the aimbot is enabled, when u let it go it gets disabled.
+
+              getgenv().Settings = {
+                Radius = 100, -- The size of your aimbot FOV, i recommend between 50 - 300 :)
+            }
+
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/main/Test%20Project%209/Arsenal%20Aimbot.lua'))()
+  	end    
+})
+
+Tab:AddToggle({
+	Name = "Esp",
+	Default = false,
+	Callback = function()
+
+
+
+		if SetEsp == nil then
+            SetEsp = "true"
+        end
+        
+        if SetEsp == "true" then
+        SetEsp = "false"
+        else
+        SetEsp = "true"
+        end
+        
+        local player = game:GetService("Players").LocalPlayer
+        
+        -- Check if LocalPlayer is available
+        if player then
+            -- Check if the "esp" tag already exists
+            local existingTag = player:FindFirstChild("esp")
+            
+            if existingTag then
+                -- If the "esp" tag exists, update its value
+                existingTag.Value = SetEsp  -- Set this value to what you need
+            else
+                -- If the "esp" tag does not exist, create a new one
+                local espTag = Instance.new("StringValue")
+                espTag.Name = "esp"
+                espTag.Value = SetEsp  -- Set this value to what you need
+        
+                -- Parent the tag to the player
+                espTag.Parent = player
+            end
+        else
+            -- If LocalPlayer is not available, print a warning
+            print("LocalPlayer is not available")
+        end 
+
+
+
+        
+	end    
+})
+
+
+Tab:AddButton({
+	Name = "Op guns (obvious)",
+	Callback = function()
+        if modguns == false then
+      		modguns = true
+        end
+  	end    
+})
+
+while modguns == false do
+    wait(0.1)
+end
+
+
+
+
+
+
+-- Changes the attributes of every gun in Arsenal.
+-- Made by @shall0e on discord, bCelery 2024.
+local RS = game:GetService("ReplicatedStorage")
+print("START")
+function changeThis(g,n,v)
+    if g:FindFirstChild(n) ~= nil and g:FindFirstChild(n):IsA("ValueBase") then
+        g[n].Value = v
+    else
+        warn(g.Name..' does not have a value for "'..n..'"')
+    end
+end
+for i,g in pairs(RS.Weapons:GetChildren()) do
+    if g ~= nil then
+        changeThis(g,"FireRate",0.011)
+        changeThis(g,"Auto",true)
+        changeThis(g,"RecoilControl",0)
+        changeThis(g,"Ammo",999)
+        -- Add more functions to change more shit.
+    end
+end
+
+-- Reference to the local player
+local localPlayer = game.Players.LocalPlayer
+
+-- Function to handle local player death
+local function onLocalPlayerDeath()
+    changeThis(g,"FireRate",0.011)
+    changeThis(g,"Auto",true)
+    changeThis(g,"RecoilControl",0)
+    changeThis(g,"Ammo",999)
+end
+
+-- Function to handle when the local player's character is added
+local function onCharacterAdded(character)
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    if humanoid then
+        humanoid.Died:Connect(onLocalPlayerDeath)
+    end
+end
+
+-- Connect the CharacterAdded event for the local player
+localPlayer.CharacterAdded:Connect(onCharacterAdded)
+
+-- If the local player's character is already loaded, handle it immediately
+if localPlayer.Character then
+    onCharacterAdded(localPlayer.Character)
+end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Esp"))()
