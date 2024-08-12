@@ -435,53 +435,14 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
             loadstring(game:HttpGet("https://raw.githubusercontent.com/FreezyWare/Remake-Executor/main/Executor/Krnl-Legacy.Lua"))()
           end    
     })
-    
-    Tab:AddToggle({
-	Name = "Esp - Made By MAJESTY",
-	Default = false,
-	Callback = function()
 
+    Tab:AddButton({
+        Name = "Esp - Made By MAJESTY",
+        Callback = function()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/esp'))()
+          end    
+    })
 
-
-		if SetEsp == nil then
-            SetEsp = "true"
-        end
-        
-        if SetEsp == "true" then
-        SetEsp = "false"
-        else
-        SetEsp = "true"
-        end
-        
-        local player = game:GetService("Players").LocalPlayer
-        
-        -- Check if LocalPlayer is available
-        if player then
-            -- Check if the "esp" tag already exists
-            local existingTag = player:FindFirstChild("esp")
-            
-            if existingTag then
-                -- If the "esp" tag exists, update its value
-                existingTag.Value = SetEsp  -- Set this value to what you need
-            else
-                -- If the "esp" tag does not exist, create a new one
-                local espTag = Instance.new("StringValue")
-                espTag.Name = "esp"
-                espTag.Value = SetEsp  -- Set this value to what you need
-        
-                -- Parent the tag to the player
-                espTag.Parent = player
-            end
-        else
-            -- If LocalPlayer is not available, print a warning
-            print("LocalPlayer is not available")
-        end 
-
-
-
-        
-	end    
-})
     Tab:AddButton({
         Name = "SYSTEMBROKEN - Made By MalwareHUB",
         Callback = function()
@@ -656,5 +617,3 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     DevBuild = nil
 
     OrionLib:Init()
-
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Celery%20Esp"))()
