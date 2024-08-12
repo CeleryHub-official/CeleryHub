@@ -137,6 +137,7 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             "Ranked";
             "Arsenal";
             "Da Hood";
+            "Pressure";
         }
 
          -- Function to count the number of entries in the table
@@ -248,6 +249,8 @@ GameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Na
             script1 = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Arsenal%20Gui"
         elseif gs == "Da Hood" then
             script1 = "https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"
+        elseif gs == "Pressure" then
+            script1 = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Pressure%20Gui"
         end
 
 local player = game:GetService("Players").LocalPlayer
@@ -584,6 +587,20 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/ma
             })
                 
             end
+
+         if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
+            local Tab = Window:MakeTab({
+                 Name = "Pressure",
+                   Icon = "rbxassetid://4483345998",
+                 })
+                 Tab:AddButton({
+                  Name = "Pressure Gui - Made By playvora",
+                   Callback = function()
+                      loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Pressure%20Gui"))()
+                    end    
+               })
+                    
+                end
 
 
     --[[
