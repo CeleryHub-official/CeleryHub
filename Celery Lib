@@ -1,71 +1,3 @@
-LibName = getgenv().LibName
-CustomIcon = getgenv().CustomIcon
-LibTheme = getgenv().LibTheme
-
-if LibTheme == "Orion" then
-    MR = 25
-    MG = 25
-    MB = 25
-
-    SeR = 32
-    SeG = 32
-    SeB = 32
-
-    StR = 60
-    StG = 60
-    StB = 60
-
-    DR = 60
-    DG = 60
-    DB = 60
-
-    TR = 240
-    TG = 240
-    TB = 240
-
-    TdR = 150
-    TdG = 150
-    TdB = 150
-elseif LibTheme == "Celery" then
-    MR = 22
-    MG = 38
-    MB = 22
-
-    SeR = 22
-    SeG = 42
-    SeB = 22
-
-    StR = 60
-    StG = 70
-    StB = 60
-
-    DR = 60
-    DG = 70
-    DB = 60
-
-    TR = 240
-    TG = 240
-    TB = 240
-
-    TdR = 150
-    TdG = 150
-    TdB = 150
-end
-
-
-
-
-if LibIcon == "Celery" then
-    LibIcon = "rbxassetid://18910309979"
-elseif LibIcon == "Orion" then
-    LibIcon = "rbxassetid://8834748103"
-else
-    LibIcon = CustomIcon
-end
-
-
-
-
 
 
 local UserInputService = game:GetService("UserInputService")
@@ -75,8 +7,6 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HttpService = game:GetService("HttpService")
 
-print(ColorMain[2])
-
 local CeleryLib = {
 	Elements = {},
 	ThemeObjects = {},
@@ -84,20 +14,18 @@ local CeleryLib = {
 	Flags = {},
 	Themes = {
 		Default = {
-			Main = Color3.fromRGB(MR, MG, MB),
-			Second = Color3.fromRGB(SeR, SeG, SeB),
-			Stroke = Color3.fromRGB(StR, StG, StB),
-			Divider = Color3.fromRGB(DR, DG, DB),
-			Text = Color3.fromRGB(TR, TG, TB),
-			TextDark = Color3.fromRGB(TdR, TdG, TdB)
+			Main = Color3.fromRGB(25, 25, 25),
+			Second = Color3.fromRGB(32, 32, 32),
+			Stroke = Color3.fromRGB(60, 60, 60),
+			Divider = Color3.fromRGB(60, 60, 60),
+			Text = Color3.fromRGB(240, 240, 240),
+			TextDark = Color3.fromRGB(150, 150, 150)
 		}
 	},
 	SelectedTheme = "Default",
 	Folder = nil,
 	SaveCfg = false
 }
-
-
 
 --Feather Icons https://github.com/evoincorp/lucideblox/tree/master/src/modules/util - Created by 7kayoh
 local Icons = {}
@@ -550,11 +478,11 @@ function CeleryLib:MakeWindow(WindowConfig)
 	if WindowConfig.IntroEnabled == nil then
 		WindowConfig.IntroEnabled = true
 	end
-	WindowConfig.IntroText = WindowConfig.IntroText or (LibName .. " Library")
+	WindowConfig.IntroText = WindowConfig.IntroText or "Celery Library"
 	WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
 	WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-	WindowConfig.Icon = WindowConfig.Icon or LibIcon
-	WindowConfig.IntroIcon = WindowConfig.IntroIcon or LibIcon
+	WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://8834748103"
+	WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8834748103"
 	CeleryLib.Folder = WindowConfig.ConfigFolder
 	CeleryLib.SaveCfg = WindowConfig.SaveConfig
 
@@ -1834,3 +1762,5 @@ end
 function CeleryLib:Destroy()
 	Celery:Destroy()
 end
+
+return CeleryLib
