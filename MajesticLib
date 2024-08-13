@@ -1847,4 +1847,4 @@ function MajesticLib:Destroy()
 	Majestic:Destroy()
 end
 
---return MajesticLib
+return MajesticLib
