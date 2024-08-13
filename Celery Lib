@@ -1,37 +1,31 @@
 LibName = getgenv().LibName
 CustomIcon = getgenv().CustomIcon
 LibTheme = getgenv().LibTheme
-ColorMain = getgenv().ColorMain
-ColorSecond = getgenv().ColorSecond
-ColorStroke = getgenv().ColorStroke
-ColorDivider = getgenv().ColorDivider
-ColorText = getgenv().ColorText
-ColorTextDark = getgenv().ColorTextDark
 
 if LibTheme == "Custom" then
-    MR = ColorMain[1]
-    MG = ColorMain[2]
-    MB = ColorMain[3]
+    MR = getgenv().CMR
+    MG = getgenv().CMG
+    MB = getgenv().CMB
 
-    SeR = ColorSecond[1]
-    SeG = ColorSecond[2]
-    SeB = ColorSecond[3]
+    SeR = getgenv().SeMR
+    SeG = getgenv().SeMG
+    SeB = getgenv().SeMB
 
-    StR = ColorStroke[1]
-    StG = ColorStroke[2]
-    StB = ColorStroke[3]
+    StR = getgenv().StMR
+    StG = getgenv().StMG
+    StB = getgenv().StMB
 
-    DR = ColorDivider[1]
-    DG = ColorDivider[2]
-    DB = ColorDivider[3]
+    DR = getgenv().DMR
+    DG = getgenv().DMG
+    DB = getgenv().DMB
 
-    TR = ColorText[1]
-    TG = ColorText[2]
-    TB = ColorText[3]
+    TR = getgenv().TMR
+    TG = getgenv().TMG
+    TB = getgenv().TMB
 
-    TdR = ColorTextDark[1]
-    TdG = ColorTextDark[2]
-    TdB = ColorTextDark[3]
+    TdR = getgenv().TdMR
+    TdG = getgenv().TdMG
+    TdB = getgenv().TdMB
 elseif LibTheme == "Orion" then
     MR = 25
     MG = 25
