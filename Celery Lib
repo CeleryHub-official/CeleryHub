@@ -2,31 +2,7 @@ LibName = getgenv().LibName
 CustomIcon = getgenv().CustomIcon
 LibTheme = getgenv().LibTheme
 
-if LibTheme == "Custom" then
-    MR = getgenv().CMR
-    MG = getgenv().CMG
-    MB = getgenv().CMB
-
-    SeR = getgenv().SeMR
-    SeG = getgenv().SeMG
-    SeB = getgenv().SeMB
-
-    StR = getgenv().StMR
-    StG = getgenv().StMG
-    StB = getgenv().StMB
-
-    DR = getgenv().DMR
-    DG = getgenv().DMG
-    DB = getgenv().DMB
-
-    TR = getgenv().TMR
-    TG = getgenv().TMG
-    TB = getgenv().TMB
-
-    TdR = getgenv().TdMR
-    TdG = getgenv().TdMG
-    TdB = getgenv().TdMB
-elseif LibTheme == "Orion" then
+if LibTheme == "Orion" then
     MR = 25
     MG = 25
     MB = 25
