@@ -3,7 +3,31 @@ LibName = getgenv().Name
 LibIcon = getgenv().Icon
 
 
-if LibTheme == "Orion" then
+if LibTheme == "Custom" then
+    MR = getgenv().MainRed
+    MG = getgenv().MainGreen
+    MB = getgenv().MainBlue
+
+    SeR = getgenv().SecondRed
+    SeG = getgenv().SecondGreen
+    SeB = getgenv().SecondBlue
+
+    StR = getgenv().StrokeRed
+    StG = getgenv().StrokeGreen
+    StB = getgenv().StrokeBlue
+
+    DR = getgenv().DividerRed
+    DG = getgenv().DividerGreen
+    DB = getgenv().DividerBlue
+
+    TR = getgenv().TextRed
+    TG = getgenv().TextGreen
+    TB = getgenv().TextBlue
+
+    TdR = getgenv().TextDarkRed
+    TdG = getgenv().TextDarkGreen
+    TdB = getgenv().TextDarkBlue
+elseif LibTheme == "Orion" then
     MR = 25
     MG = 25
     MB = 25
@@ -1823,4 +1847,4 @@ function MajesticLib:Destroy()
 	Majestic:Destroy()
 end
 
-return MajesticLib
+--return MajesticLib
