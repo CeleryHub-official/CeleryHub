@@ -78,7 +78,42 @@ if player then
 end
 
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+getgenv().Icon = "Orion" -- Orion or paste a custom rbxassetid
+getgenv().Name = "Celery"
+         Theme = "Orion" -- Orion, Majestic, or Custom
+
+if Theme == "Custom" then
+    getgenv().MainRed = 0
+    getgenv().MainGreen = 0
+    getgenv().MainBlue = 0
+
+    getgenv().SecondRed = 0
+    getgenv().SecondGreen = 0
+    getgenv().SecondBlue = 0
+
+    getgenv().StrokeRed = 0
+    getgenv().StrokeGreen = 0
+    getgenv().StrokeBlue = 0
+
+    getgenv().DividerRed = 0
+    getgenv().DividerGreen = 0
+    getgenv().DividerBlue = 0
+
+    getgenv().TextRed = 0
+    getgenv().TextGreen = 0
+    getgenv().TextBlue = 0
+
+    getgenv().TextDarkRed = 0
+    getgenv().TextDarkGreen = 0
+    getgenv().TextDarkBlue = 0
+
+    getgenv().Theme = "Custom"
+else
+    getgenv().Theme = Theme
+end
+
+
+local MajesticLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/CeleryHub-official/Majestic-Lib/main/Lib%20Source')))()
 
 lvl = tonumber(ps)
 
@@ -109,7 +144,7 @@ if Whitelisted == true then
 else
     WindowName = (Window .. " [Untested]")
 end
-local Window = OrionLib:MakeWindow({Name = WindowName, HidePremium = true, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = MajesticLib:MakeWindow({Name = WindowName, HidePremium = true, SaveConfig = true, ConfigFolder = "MajesticTest"})
 
 --[[
 Name = <string> - The name of the UI.
@@ -195,7 +230,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
         Tab:AddButton({
             Name = autoExecName,
             Callback = function()
-                OrionLib:Destroy()
+                MajesticLib:Destroy()
 
 
                 -- AUTO EXEC
@@ -391,7 +426,7 @@ Callback = <function> - The function of the dropdown.
         Tab:AddButton({
             Name = "Debug Menu",
             Callback = function()
-                OrionLib:Destroy()
+                MajesticLib:Destroy()
                 DebugUrl = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/Debug%20menu"
                 loadstring(game:HttpGet(DebugUrl))()
             end    
@@ -617,7 +652,7 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
 
     DevBuild = nil
 
-    OrionLib:Init()
+    MajesticLib:Init()
 
     local RunService = game:GetService("RunService")
     RunService.RenderStepped:Connect(function(frame)
