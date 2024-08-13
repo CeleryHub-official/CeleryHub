@@ -1,0 +1,4 @@
+getgenv().ExecName = "CustomName"
+getgenv().StarterText = "CustomPlaceHolderText"
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/CustomSploit"))()
