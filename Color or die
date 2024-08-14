@@ -1,0 +1,488 @@
+-- Table to keep track of highlights
+local highlights = {}
+
+function esp(ThisColor, set)
+    -- Variables for highlight colors
+    local highlightFillColor = Color3.fromRGB(255, 0, 0) -- Default fill color
+    local highlightOutlineColor = Color3.fromRGB(250, 250, 250) -- Default outline color
+    local highlightFillTransparency = 0
+    local highlightOutlineTransparency = 0
+
+    if ThisColor == "Red" then
+        highlightFillColor = Color3.fromRGB(255, 0, 0)
+    elseif ThisColor == "Blue" then
+        highlightFillColor = Color3.fromRGB(2, 30, 240)
+    elseif ThisColor == "Pink" then
+        highlightFillColor = Color3.fromRGB(255, 0, 128)
+    elseif ThisColor == "Purple" then
+        highlightFillColor = Color3.fromRGB(179, 25, 255)
+    elseif ThisColor == "White" then
+        highlightFillColor = Color3.fromRGB(255, 255, 255)
+    elseif ThisColor == "Teal" then
+        highlightFillColor = Color3.fromRGB(0, 128, 128)
+    elseif ThisColor == "Green" then
+        highlightFillColor = Color3.fromRGB(0, 255, 0)
+    elseif ThisColor == "Yellow" then
+        highlightFillColor = Color3.fromRGB(255, 246, 0)
+    elseif ThisColor == "Orange" then
+        highlightFillColor = Color3.fromRGB(255, 103, 0)
+    end
+    
+    -- Function to find an object by its path
+    local function findObjectByPath(path)
+        local parts = path:split("/") -- Split the path into parts
+        local parent = workspace
+
+        for _, part in ipairs(parts) do
+            parent = parent:FindFirstChild(part)
+            if not parent then
+                return nil
+            end
+        end
+        return parent
+    end
+
+    -- Define the path to your object
+    local path = "GameplayAssets/Items/Normal/PaintBucket/" .. ThisColor .. "/Core"
+    local coreObject = findObjectByPath(path)
+
+ if coreObject ~= nil then
+
+    -- Check if a highlight already exists for this object
+    if highlights[coreObject] then
+        -- Update the existing highlight
+        local highlight = highlights[coreObject]
+        if set then
+            highlight.Adornee = coreObject
+            highlight.FillColor = highlightFillColor
+            highlight.OutlineColor = highlightFillColor
+            highlight.FillTransparency = highlightFillTransparency
+            highlight.OutlineTransparency = highlightOutlineTransparency
+        else
+            highlight:Destroy()
+            highlights[coreObject] = nil
+        end
+    else
+        if set then
+            -- Create a new highlight
+            local highlight = Instance.new("Highlight")
+            highlight.Adornee = coreObject
+            highlight.FillColor = highlightFillColor
+            highlight.OutlineColor = highlightFillColor
+            highlight.FillTransparency = highlightFillTransparency
+            highlight.OutlineTransparency = highlightOutlineTransparency
+            highlight.Parent = workspace -- or any other suitable parent
+
+            -- Store the highlight in the table
+            highlights[coreObject] = highlight
+        end
+    end
+end
+end
+
+-- Table to keep track of BrushlightBrush
+local BrushlightBrush = {}
+
+function espbrush(set)
+    -- Variables for Brushlight colors
+    local BrushlightFillColor = Color3.fromRGB(255, 255, 255) -- Default fill color
+    local BrushlightOutlineColor = Color3.fromRGB(250, 250, 250) -- Default outline color
+    local BrushlightFillTransparency = 0
+    local BrushlightOutlineTransparency = 0
+
+    -- Function to find an object by its path
+    local function findObjectByPath(path)
+        local parts = path:split("/") -- Split the path into parts
+        local parent = workspace
+
+        for _, part in ipairs(parts) do
+            parent = parent:FindFirstChild(part)
+            if not parent then
+                return nil
+            end
+        end
+        return parent
+    end
+
+    -- Loop to handle multiple values of ThisBrush
+    for ThisBrush = 1, 9 do
+        -- Define the path to your object
+        local path = "GameplayAssets/Items/Collectable/Collectable/" .. tostring(ThisBrush)
+        local coreObject = findObjectByPath(path)
+
+        if coreObject ~= nil then
+
+        -- Check if a Brushlight already exists for this object
+        if BrushlightBrush[coreObject] then
+            -- Update the existing Brushlight
+            local Brushlight = BrushlightBrush[coreObject]
+            if set then
+                Brushlight.Adornee = coreObject
+                Brushlight.FillColor = BrushlightFillColor
+                Brushlight.OutlineColor = BrushlightFillColor
+                Brushlight.FillTransparency = BrushlightFillTransparency
+                Brushlight.OutlineTransparency = BrushlightOutlineTransparency
+            else
+                Brushlight:Destroy()
+                BrushlightBrush[coreObject] = nil
+            end
+        else
+            if set then
+                -- Create a new Brushlight
+                local Brushlight = Instance.new("Highlight")
+                Brushlight.Adornee = coreObject
+                Brushlight.FillColor = BrushlightFillColor
+                Brushlight.OutlineColor = BrushlightFillColor
+                Brushlight.FillTransparency = BrushlightFillTransparency
+                Brushlight.OutlineTransparency = BrushlightOutlineTransparency
+                Brushlight.Parent = workspace -- or any other suitable parent
+
+                -- Store the Brushlight in the table
+                BrushlightBrush[coreObject] = Brushlight
+            end
+        end
+    end
+end
+end
+
+-- Table to keep track of MonsterlightMonster
+local MonsterlightMonster = {}
+
+function espMonster(set)
+    -- Variables for Monsterlight colors
+    local MonsterlightFillColor = Color3.fromRGB(255, 0, 0) -- Default fill color
+    local MonsterlightOutlineColor = Color3.fromRGB(0, 0, 0) -- Default outline color
+    local MonsterlightFillTransparency = 0
+    local MonsterlightOutlineTransparency = 0
+
+    -- Function to find an object by its path
+    local function findObjectByPath(path)
+        local parts = path:split("/") -- Split the path into parts
+        local parent = workspace
+
+        for _, part in ipairs(parts) do
+            parent = parent:FindFirstChild(part)
+            if not parent then
+                return nil
+            end
+        end
+        return parent
+    end
+
+    -- Loop to handle multiple values of ThisMonster
+    for ThisMonster = 1, 9 do
+        -- Define the path to your object
+        local path = "GameplayAssets/Monsters/Bill"
+        local coreObject = findObjectByPath(path)
+
+        -- Check if a Monsterlight already exists for this object
+        if MonsterlightMonster[coreObject] then
+            -- Update the existing Monsterlight
+            local Monsterlight = MonsterlightMonster[coreObject]
+            if set then
+                Monsterlight.Adornee = coreObject
+                Monsterlight.FillColor = MonsterlightFillColor
+                Monsterlight.OutlineColor = MonsterlightFillColor
+                Monsterlight.FillTransparency = MonsterlightFillTransparency
+                Monsterlight.OutlineTransparency = MonsterlightOutlineTransparency
+            else
+                Monsterlight:Destroy()
+                MonsterlightMonster[coreObject] = nil
+            end
+        else
+            if set then
+                -- Create a new Monsterlight
+                local Monsterlight = Instance.new("Highlight")
+                Monsterlight.Adornee = coreObject
+                Monsterlight.FillColor = MonsterlightFillColor
+                Monsterlight.OutlineColor = MonsterlightFillColor
+                Monsterlight.FillTransparency = MonsterlightFillTransparency
+                Monsterlight.OutlineTransparency = MonsterlightOutlineTransparency
+                Monsterlight.Parent = workspace -- or any other suitable parent
+
+                -- Store the Monsterlight in the table
+                MonsterlightMonster[coreObject] = Monsterlight
+            end
+        end
+    end
+end
+
+
+getgenv().Icon = "Orion" -- Orion or paste a custom rbxassetid
+getgenv().Name = "Celery. "
+         Theme = "Orion" -- Orion, Majestic, or Custom
+
+if Theme == "Custom" then
+    getgenv().MainRed = 0
+    getgenv().MainGreen = 0
+    getgenv().MainBlue = 0
+
+    getgenv().SecondRed = 0
+    getgenv().SecondGreen = 0
+    getgenv().SecondBlue = 0
+
+    getgenv().StrokeRed = 0
+    getgenv().StrokeGreen = 0
+    getgenv().StrokeBlue = 0
+
+    getgenv().DividerRed = 0
+    getgenv().DividerGreen = 0
+    getgenv().DividerBlue = 0
+
+    getgenv().TextRed = 0
+    getgenv().TextGreen = 0
+    getgenv().TextBlue = 0
+
+    getgenv().TextDarkRed = 0
+    getgenv().TextDarkGreen = 0
+    getgenv().TextDarkBlue = 0
+
+    getgenv().Theme = "Custom"
+else
+    getgenv().Theme = Theme
+end
+
+local MajesticLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/CeleryHub-official/Majestic-Lib/main/Lib%20Source')))()
+
+local Window = MajesticLib:MakeWindow({Name = "Title of the library", HidePremium = false, SaveConfig = true, ConfigFolder = "MajesticTest"})
+
+local Tab = Window:MakeTab({
+	Name = "Esp",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local RedToggle = Tab:AddToggle({
+	Name = "Red",
+	Default = false,
+	Callback = function(Red)
+		
+
+
+        if Red == false then 
+            esp("Red", false)
+        elseif Red == true then
+            esp("Red", true)
+
+
+	end
+end    
+})
+
+local BlueToggle = Tab:AddToggle({
+	Name = "Blue",
+	Default = false,
+	Callback = function(Blue)
+		
+
+
+        if Blue == false then 
+            esp("Blue", false)
+        elseif Blue == true then
+            esp("Blue", true)
+
+
+	end
+end    
+})
+
+local PinkToggle = Tab:AddToggle({
+	Name = "Pink",
+	Default = false,
+	Callback = function(Pink)
+		
+
+
+        if Pink == false then 
+            esp("Pink", false)
+        elseif Pink == true then
+            esp("Pink", true)
+
+
+	end
+end    
+})
+
+local PurpleToggle = Tab:AddToggle({
+	Name = "Purple",
+	Default = false,
+	Callback = function(Purple)
+		
+
+
+        if Purple == false then 
+            esp("Purple", false)
+        elseif Purple == true then
+            esp("Purple", true)
+
+
+	end
+end    
+})
+
+local WhiteToggle = Tab:AddToggle({
+	Name = "White",
+	Default = false,
+	Callback = function(White)
+		
+
+
+        if White == false then 
+            esp("White", false)
+        elseif White == true then
+            esp("White", true)
+
+
+	end
+end    
+})
+
+local TealToggle = Tab:AddToggle({
+	Name = "Teal",
+	Default = false,
+	Callback = function(Teal)
+		
+
+
+        if Teal == false then 
+            esp("Teal", false)
+        elseif Teal == true then
+            esp("Teal", true)
+
+
+	end
+end    
+})
+
+local GreenToggle = Tab:AddToggle({
+	Name = "Green",
+	Default = false,
+	Callback = function(Green)
+		
+
+
+        if Green == false then 
+            esp("Green", false)
+        elseif Green == true then
+            esp("Green", true)
+
+
+	end
+end    
+})
+
+local YellowToggle = Tab:AddToggle({
+	Name = "Yellow",
+	Default = false,
+	Callback = function(Yellow)
+		
+
+
+        if Yellow == false then 
+            esp("Yellow", false)
+        elseif Yellow == true then
+            esp("Yellow", true)
+
+
+	end
+end    
+})
+
+local OrangeToggle = Tab:AddToggle({
+	Name = "Orange",
+	Default = false,
+	Callback = function(Orange)
+		
+
+
+        if Orange == false then 
+            esp("Orange", false)
+        elseif Orange == true then
+            esp("Orange", true)
+
+
+	end
+end    
+})
+
+Tab:AddButton({
+	Name = "Show All",
+	Callback = function()
+      		esp("Red", true)
+            RedToggle:Set(true)
+            esp("Blue", true)
+            BlueToggle:Set(true)
+            esp("Pink", true)
+            PinkToggle:Set(true)
+            esp("Purple", true)
+            PurpleToggle:Set(true)
+            esp("White", true)
+            WhiteToggle:Set(true)
+            esp("Teal", true)
+            TealToggle:Set(true)
+            esp("Green", true)
+            GreenToggle:Set(true)
+            esp("Yellow", true)
+            YellowToggle:Set(true)
+            esp("Orange", true)
+            OrangeToggle:Set(true)
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Hide All",
+	Callback = function()
+      		esp("Red", false)
+            RedToggle:Set(false)
+            esp("Blue", false)
+            BlueToggle:Set(false)
+            esp("Pink", false)
+            PinkToggle:Set(false)
+            esp("Purple", false)
+            PurpleToggle:Set(false)
+            esp("White", false)
+            WhiteToggle:Set(false)
+            esp("Teal", false)
+            TealToggle:Set(false)
+            esp("Green", false)
+            GreenToggle:Set(false)
+            esp("Yellow", false)
+            YellowToggle:Set(false)
+            esp("Orange", false)
+            OrangeToggle:Set(false)
+  	end    
+})
+
+local BrushToggle = Tab:AddToggle({
+	Name = "Brushes",
+	Default = false,
+	Callback = function(Brush)
+		
+
+
+        if Brush == false then 
+            espbrush(false)
+        elseif Brush == true then
+            espbrush(true)
+
+
+	end
+end    
+})
+
+local MonsterToggle = Tab:AddToggle({
+	Name = "Monster",
+	Default = false,
+	Callback = function(Monster)
+		
+
+
+        if Monster == false then 
+            espMonster(false)
+        elseif Monster == true then
+            espMonster(true)
+
+
+	end
+end    
+})
