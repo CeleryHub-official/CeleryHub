@@ -79,8 +79,8 @@ end
 
 
 getgenv().Icon = "Orion" -- Orion or paste a custom rbxassetid
-getgenv().Name = "Celery"
-         Theme = "Orion" -- Orion, Majestic, or Custom
+getgenv().Name = "Majestic"
+         Theme = "Majestic" -- Orion, Majestic, or Custom
 
 if Theme == "Custom" then
     getgenv().MainRed = 0
@@ -128,9 +128,9 @@ elseif lvl == 4 then
 end
 
 if DevBuild == true then
-    WinName = "Celery Hub Dev Build"
+    WinName = "Majestic Hub Dev Build"
 else
-    WinName = "Celery Hub"
+    WinName = "Majestic Hub"
 end
 
 if lvl == 1 then
@@ -220,8 +220,8 @@ if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
     })
 
     Tab:AddLabel("Game Name - " .. GameName)
-    Tab:AddLabel("Celery Hub access level - " .. access)
-    Tab:AddLabel("Celery Hub Version - " .. Version)
+    Tab:AddLabel("Majestic Hub access level - " .. access)
+    Tab:AddLabel("Majestic Hub Version - " .. Version)
     Tab:AddLabel("Executor - " .. Executor)
         
     if lvl >= 1 and AutoExecFound ~= false then -- if lvl is greater than or equal to 3(beta) and AutoExecFound isnt false then
@@ -615,6 +615,20 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/diglt/Luau-Scripts/ma
                })
                     
                 end
+
+            if lvl >= 1 then -- if lvl is grater than or equal to 1(User)
+                local Tab = Window:MakeTab({
+                    Name = "Combat Warriors",
+                    Icon = "rbxassetid://4483345998",
+                    })
+                    Tab:AddButton({
+                    Name = "Combat Warriors Celery - Made By kiizon",
+                    Callback = function()
+                        loadstring(game:HttpGet("https://raw.githubusercontent.com/CeleryHub/CeleryHub/main/scripts/cxmbxtwxrrixrs.lua"))()
+                        end    
+                })
+                        
+                    end
 
 
     --[[
