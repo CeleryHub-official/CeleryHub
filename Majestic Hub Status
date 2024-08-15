@@ -1,7 +1,7 @@
--- Celery Hub status
-Version = "1.1"
+-- Majestic Hub status
+Version = "2.0"
 Status = ("Online") -- Online, Down, 
-Reason = ("Test") -- Reasoning as to why Celery Hub is down
+Reason = ("Test") -- Reasoning as to why Majestic Hub is down
 
 
 
@@ -45,7 +45,7 @@ verlink = "https://raw.githubusercontent.com/CeleryHub-official/CeleryHub/main/U
 -- Get the LocalPlayer
 local player = game:GetService("Players").LocalPlayer
 if Status == "Down" then
-    player:Kick("Celery Hub is offline - " .. Reason)
+    player:Kick("Majestic Hub is offline - " .. Reason)
 elseif Status == "Online" then
     if DevBuild == nil then
     loadstring(game:HttpGet(verlink))() -- Load Start of verification
